@@ -1,0 +1,200 @@
+{% extends 'base.html' %} {% block content %}
+<div>
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <center>
+            <button
+              style="width: 100%;"
+              class="btn btn-primary collapsed"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseOne"
+              aria-expanded="false"
+              aria-controls="collapseOne"
+            >
+              reports based on average marks
+            </button>
+          </center>
+        </h2>
+      </div>
+
+      <div
+        id="collapseOne"
+        class="collapse"
+        aria-labelledby="headingOne"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+          <div id="first-graph" style="width: 100%; height: auto;">
+            {{first_graph.render|safe}}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <center>
+            <button
+              style="width: 100%;"
+              class="btn btn-primary collapsed"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              reports based based on subject marks
+            </button>
+          </center>
+        </h2>
+      </div>
+      <div
+        id="collapseTwo"
+        class="collapse"
+        aria-labelledby="headingTwo"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+          <!-- generating gradal reports based on subjects -->
+          {% for chart in chart_list %}
+          <div id="{{chart.0|safe}}">{{chart.1|safe}}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <center>
+            <button
+              style="width: 100%;"
+              class="btn btn-primary collapsed"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              How streams performed against each other
+            </button>
+          </center>
+        </h2>
+      </div>
+      <div
+        id="collapseThree"
+        class="collapse"
+        aria-labelledby="headingThree"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+          {% for chart in chart_list2 %}
+          <div id="{{chart.0}}">
+            {{chart.1|safe}}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% if request.user.teacher.is_exam_staff %}
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <center>
+            <button
+              style="width: 100%;"
+              class="btn btn-warning collapsed"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseFour"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              download report cards
+            </button>
+          </center>
+        </h2>
+      </div>
+      <div
+        id="collapseFour"
+        class="collapse"
+        aria-labelledby="headingThree"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+          {% for form in form_queryset %}
+          <div class="dropdown" style="margin:20px">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {{form.form_name}}
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              {% for stream in stream_queryset %}
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                {{stream.stream_name}}
+              </button>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}<br />
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">
+          Download reports
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        you are about to download a zipped file containing students report cards
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <a href="/download_reports?form={{form.id}}&stream={{stream.id}}">
+          <button type="button" class="btn btn-primary">download</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

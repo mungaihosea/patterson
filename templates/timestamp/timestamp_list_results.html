@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<ul class="list-group">
+  {% for x in object_list %}
+  <form method = 'POST'>{% csrf_token %}
+      <a href="#"><li class="list-group-item">
+        {% if x.results %}
+        <button type="submit" class="btn mr-2 btn-warning btn-rounded btn-sm btn-fw">Re-generate reports</button>
+        {% else %}
+        <button type="submit" class="btn mr-2 btn-primary btn-rounded btn-sm btn-fw">Generate Reports</button>
+        {% endif %}
+        {{x.exam_name}} | {{x.period}} | {{x.year}}
+        <input name=timestamp value={{x.id}} style="visibility: hidden;">
+      </form>
+      </li></a>
+
+  {% endfor %}
+    </ul>
+{% endblock content %}

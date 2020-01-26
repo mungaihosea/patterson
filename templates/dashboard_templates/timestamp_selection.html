@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">
+      enter exam scores
+    </li>
+  </ol>
+</nav>
+<ul class="list-group">
+  {% for timestamp in object_list %}
+  <a href="?timestamp={{timestamp.id}}"
+    ><li class="list-group-item">{{timestamp.exam_name}}</li></a
+  >
+  {% endfor %}
+</ul>
+{% endblock content %}

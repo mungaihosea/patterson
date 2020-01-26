@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <h3>{{timestamp}}</h3>
+  <h4>score sheet for {{teacher_subject}}</h4>
+  <p>remember to save your changes regularly</p>
+  <button type="submit" class="btn btn-success btn-rounded btn-fw">Save</button>
+  <div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>student</th>
+              <th>score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for report in object_list %}
+            <tr>
+              <td>{{report.student.student_name}}</td>
+              {% if subject == "english" %}
+              <td>
+                <input
+                  name="{{report.id}}"
+                  value="{{report.english}}"
+                  type="text"
+                />
+              </td>
+              {% elif subject == "mathematics" %}
+              <td>
+                <input
+                  name="{{report.id}}"
+                  value="{{report.mathematics}}"
+                  type="text"
+                />
+              </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock content %}

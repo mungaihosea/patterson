@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div>
+  <h5>use the following form to create an exam portal</h5><br>
+  {% if message %}
+  {{message}}
+  {% endif %}
+  <form class="forms-sample" method = "POST"> {% csrf_token %}
+          <div class="form-group row">
+            <label for="exampleInputEmail2" class="col-sm-1.5 col-form-label">exam name</label>
+            <div class="col-sm-9">
+              <input type="text" name="exam_name" class="form-control" id="exampleInputEmail2" placeholder="enter exam name">
+            </div>
+          </div>
+          </div>
+          <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-1.5 col-form-label">period</label>
+              <div class="col-sm-9">
+                <!-- <input type="text" name="exam_name" class="form-control" id="exampleInputEmail2" placeholder="enter exam name"> -->
+                <select name= "period">
+                  <option>First Term</option>
+                  <option>Second Term</option>
+                  <option>Third Term</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label for="exampleInputPassword2" class="col-sm-1.5 col-form-label">year</label>
+                <div class="col-sm-9">
+                    <select name="year">
+                        <option>{{year}}</option>
+                      </select>
+                </div>
+              </div>
+          <button type="submit" class="btn btn-success mr-2">Submit</button>
+          <button class="btn btn-light">Cancel</button>
+        </form>
+{% endblock content %}

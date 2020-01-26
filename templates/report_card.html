@@ -1,0 +1,79 @@
+{% load static %}
+<html>
+  <head>
+    <title>report card</title>
+  </head>
+  <body>
+    <div>
+      <center>
+        <div id="letter-head" style="margin: 30px">
+          <img
+            style="width: 60px;height: 60px;"
+            src="{% static 'custom_images/indianlogo.jpeg' %}"
+          />
+          <h2 style="margin: 0px;">BYGRACE HIGH SCHOOL</h2>
+          <h3 style="margin: 0px">www.bygracerhighschool.com</h3>
+          <h4 style="margin: 0px;">motto: strive for excellence</h4>
+          <h5 style="margin: 0px;">end of term report card</h5>
+        </div>
+      </center>
+      <br>
+      <hr>
+      <div style="overflow: auto;margin: 0px; padding:0px;">
+        <div id="students_info" style="float: left;">
+          <b>Name:</b> mungai hosea<br />
+          <b>Form:</b> 1 yellow<br />
+          <br />
+          <b>stream position:</b> 2<br />
+          <b>class position:</b> 1<br />
+          <b>average marks:</b> 350<br />
+        </div>
+        <div style="float: right;">
+          <img
+            id="ladyimg"
+            src="{% static 'custom_images/student_id.jpg' %}"
+            style="float: right; width: 100px; height: 100;"
+          />
+        </div>
+      </div>
+      <div style="width: 100%; height: auto;clear: both;">
+          <!-- matplot graph -->
+          <img
+            style="width: 75%; height: 350px;float: left; margin: 0px; padding:0px ;"
+            src="data:image/png;base64,{{image_base64}}"
+          />  
+        <p style="font-style: algerian;float: right; margin: 0px; padding-top:10px;">
+          <b><p>subject scores</p></b>
+          <ul style="list-style: none; font-size: 14px;">
+            <li>Mathematics: 80 A</li>
+            <li>English: 70 A-</li>
+            <li>Kiswahili: 30 D+</li>
+            <li>Chemistry: 60 C+</li>
+            <li>Physics: 60 B+</li>
+            <li>Geography: 20 E</li>
+            <li>Computer: 30 D-</li><br/>
+            <li><b>Average: 60 B</b></li>
+          </ul>
+        </p>
+      </div>
+      <div style="clear: both;">
+        <p> <b>class teacher's remarks:</b><br/>
+          you imporoved in chemistry but you can still do better in mathematics and computer.
+        </p>
+        <hr>
+      </div>
+      <br>
+      <div style="width: 100%;">
+      <div id='fees' style="float: right;">
+        <h6> fees infomation</h6>
+        Term 1 fee required   ..............<br>
+        fee paid             ..............<br>
+        fee balance           ..............<br>
+      </div>
+      <div style="float: left">
+        <h6>Administration signature</h6><br>
+        ..................................
+      </div>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<ul style="list-style: none;">
+  <li>
+    <a href="?request=enter_scores"
+      ><button style="margin: 10px" type="button" class="btn btn-dark btn-fw">
+        enter exam scores
+      </button></a
+    >
+  </li>
+  <li>
+    <a href="{% url 'view_reports' %}">
+      <button style="margin: 10px" type="button" class="btn btn-info btn-fw">
+        view reports
+      </button></a
+    >
+  </li>
+  {% if user.teacher.is_exam_staff %}
+  <li>
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button
+              class="btn btn-danger btn-fw"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseOne"
+              aria-expanded="false"
+              aria-controls="collapseOne"
+            >
+              Exam co-ordinator administration
+            </button>
+          </h2>
+          These option is unique to the schools exam co-ordinator
+        </div>
+
+        <div
+          id="collapseOne"
+          class="collapse"
+          aria-labelledby="headingOne"
+          data-parent="#accordionExample"
+        >
+          <div class="card-body">
+            <ul style="list-style: none;">
+              <li>
+                <a href="{% url 'generate_results' %}"
+                  ><button
+                    style="margin: 10px"
+                    type="button"
+                    class="btn btn-success btn-fw"
+                  >
+                    <i class="mdi mdi-cloud-download"></i> generate reports
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="{% url 'generate_results' %}"
+                  ><button
+                    style="margin: 10px"
+                    type="button"
+                    class="btn btn-success btn-fw"
+                  >
+                    <i class="mdi mdi-cloud-download"></i> generate reports
+                    cards
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="{% url 'timestamp' %}"
+                  ><button
+                    style="margin: 10px"
+                    type="button"
+                    class="btn btn-primary btn-fw"
+                  >
+                    add new Exam
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="{% url 'timestamp_list' %}">
+                  <button
+                    style="margin: 10px;"
+                    type="button"
+                    class="btn btn-danger btn-fw"
+                  >
+                    open/close portal
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="{% url 'timestamp_list' %}">
+                  <button
+                    style="margin: 10px;"
+                    type="button"
+                    class="btn btn-dark btn-fw"
+                  >
+                    advanced reports
+                  </button></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  {% endif %}
+</ul>
+
+{% endblock content %}

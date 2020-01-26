@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% block content %}
+<p>edit your profile and account info here</p>
+<div class="col-12 stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Edit profile information</h4>
+      <p class="card-description"></p>
+      <form class="forms-sample" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <div class="form-group row">
+          <label for="exampleInputEmail2" class="col-sm-3 col-form-label"
+            >profile picture</label
+          >
+          <div class="col-sm-9">
+            <input type="file" placeholder="" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputEmail2" class="col-sm-3 col-form-label"
+            >first name</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail2"
+              placeholder="Enter email"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputEmail2" class="col-sm-3 col-form-label"
+            >second name</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail2"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputEmail2" class="col-sm-3 col-form-label"
+            >username</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail2"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputEmail2" class="col-sm-3 col-form-label"
+            >Email</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail2"
+              placeholder="Enter email"
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mr-2">Submit</button>
+        <button class="btn btn-light">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

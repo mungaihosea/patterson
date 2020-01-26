@@ -1,0 +1,139 @@
+{% extends 'base.html' %} {% block content %}
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Student registration Form</h4>
+      <form class="form-sample">
+        <p class="card-description">
+          <h6>Personal info</h6>
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">First Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Last Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Gender</label>
+              <div class="col-sm-9">
+                <select class="form-control">
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Date of Birth</label>
+              <div class="col-sm-9">
+                <input class="form-control" placeholder="dd/mm/yyyy" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Form</label>
+              <div class="col-sm-9">
+                <select class="form-control">
+                  {% for form in form_queryset %}
+                  <option>{{form}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Stream</label>
+              <div class="col-sm-9">
+                <select class="form-control">
+                  {% for stream in stream_queryset %}
+                  <option>{{stream}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="card-description">
+          <h6>Address</h6>
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">phone number</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">county</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">parent's phone number</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Parents Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">City</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="card-description">
+          <h6>subjects info</h6>
+          compulsory subjects
+        </p>
+        {% for subject in subject_queryset %}
+        <div class="row">
+            {% if subject.compulsory %}
+            {{subject.subject_name}}
+            {% endif %}
+        </div>
+        {% endfor %}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

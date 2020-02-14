@@ -5,7 +5,7 @@ cffi==1.13.2
 cssselect2==0.2.2
 cycler==0.10.0
 defusedxml==0.6.0
-Django==2.2.7
+Django==2.2.10
 html5lib==1.0.1
 kiwisolver==1.1.0
 matplotlib==3.1.2
